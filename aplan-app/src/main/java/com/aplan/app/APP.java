@@ -2,7 +2,7 @@
  * @ProjectName: aplan-app
  * @Description: 本内容仅限于招商云途内部使用，禁止转发.
  */
-package com.aplan.boot;
+package com.aplan.app;
 
 
 /**
