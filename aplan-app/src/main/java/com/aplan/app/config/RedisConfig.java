@@ -12,12 +12,11 @@ import org.springframework.stereotype.Component;
 /**
  * 任务配置
  * 
- * @author chenjunpeng
  * @since 1.0.0
  * @Date 2015-8-25
  */
 @Component
-@Configuration
+//@Configuration
 @ConfigurationProperties(prefix = "redis")
 public class RedisConfig {
 
