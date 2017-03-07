@@ -19,7 +19,7 @@ import org.springframework.context.annotation.PropertySources;
 @SpringBootApplication
 @EnableConfigurationProperties
 @PropertySources({
-                                 @PropertySource("classpath:/config/app/app-${spring.profiles.active}.properties")
+                                 @PropertySource("classpath:config/app/app-${spring.profiles.active}.properties")
                               })
 public class APP {
 	
@@ -28,7 +28,7 @@ public class APP {
 		    if ((System.getProperty("spring.profiles.active") == null)) {
 		        System.setProperty("spring.profiles.active", "dev");
 		    }
-		    System.setProperty("logback.configurationFile", "config/log/logback-" + System.getProperty("spring.profiles.active") + ".xml");
+		    //System.setProperty("logging.config", "classpath:config/log/logback-" + System.getProperty("spring.profiles.active") + ".xml");
 		    SpringApplication.run(APP.class, args);
 	}
 }

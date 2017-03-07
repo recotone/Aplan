@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
-	<classPathEntry location="E:/develop/tools/apache-maven-3.0.3/repo/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar" />
+	<classPathEntry location="/home/yh/workspace/maven_jar/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar" />
 	<context id="context1">
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://192.168.20.22:3306/flycar_wx" 
-			userId="ytdev"
-			password="ytdev" />
-		<javaModelGenerator targetPackage="com.yuntu.weixin.flycar.app.weixin.entity"
-			targetProject="yt-weixin-flycar-app" />
-		<sqlMapGenerator targetPackage="com.yuntu.weixin.flycar.app.weixin.mapper"
-			targetProject="yt-weixin-flycar-app" />
-		<javaClientGenerator targetPackage="com.yuntu.weixin.flycar.app.weixin.mapper"
-			targetProject="yt-weixin-flycar-app" type="XMLMAPPER" />
-		<table schema="flycar_wx" tableName="t_pay_order">
+			connectionURL="jdbc:mysql://192.168.0.200:3306/aplan" 
+			userId="aplan"
+			password="aplan" />
+		<javaModelGenerator targetPackage="com.aplan.app.entity"      targetProject="aplan-app" />
+		<sqlMapGenerator targetPackage="com.aplan.app.mapper"        targetProject="aplan-app" />
+		<javaClientGenerator targetPackage="com.aplan.app.mapper"   targetProject="aplan-app"   type="XMLMAPPER" />
+		<table schema="aplan" tableName="t_user">
 		</table>
 	</context>
 </generatorConfiguration>
