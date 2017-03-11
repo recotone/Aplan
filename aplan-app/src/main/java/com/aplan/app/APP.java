@@ -7,6 +7,7 @@ package com.aplan.app;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 
@@ -21,14 +22,21 @@ import org.springframework.context.annotation.PropertySources;
 @PropertySources({
                                  @PropertySource("classpath:config/app/app-${spring.profiles.active}.properties")
                               })
-public class APP {
-	
+public class APP extends SpringBootServletInitializer{
 	 public static void main(String[] args) {
 		    // 设置默认的配置
 		    if ((System.getProperty("spring.profiles.active") == null)) {
 		        System.setProperty("spring.profiles.active", "dev");
 		    }
-		    //System.setProperty("logging.config", "classpath:config/log/logback-" + System.getProperty("spring.profiles.active") + ".xml");
+		    System.setProperty("logging.config", "classpath:config/log/logback-" + System.getProperty("spring.profiles.active") + ".xml");
 		    SpringApplication.run(APP.class, args);
-	}
+	  }
+	
+	/*@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		 if ((System.getProperty("spring.profiles.active") == null)) {
+		        System.setProperty("spring.profiles.active", "dev");
+		    }
+        return builder.sources(APP.class);
+    }*/
 }
