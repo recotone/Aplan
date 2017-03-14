@@ -3,10 +3,14 @@
  */
 package com.aplan.app.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+
+import redis.clients.jedis.JedisShardInfo;
 
 
 /**
@@ -15,30 +19,27 @@ import org.springframework.stereotype.Component;
  * @since 1.0.0
  * @Date 2015-8-25
  */
-@Component
-//@Configuration
-@ConfigurationProperties(prefix = "redis")
+@Configuration
 public class RedisConfig {
+	
+	@Autowired
+	JedisConnectionFactory jedisConnectionFactory;
+	
+	@Autowired
+	StringRedisTemplate  redisTemplate;
 
-  private String imageHostAndPort;// 图片组装redis集群
+	@Bean
+	public JedisConnectionFactory  getJedisConnectionFactory() throws Exception {
+		JedisShardInfo info = new JedisShardInfo("192.168.0.200",6379);
+		JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(info);
+	  return jedisConnectionFactory;
+	}
 
-  /**
-   * @return the imageHostAndPort
-   */
-  public String getImageHostAndPort() {
-    return imageHostAndPort;
-  }
+	@Bean
+	public StringRedisTemplate  getStringRedisTemplate() throws Exception {
+		StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
+		stringRedisTemplate.setConnectionFactory(jedisConnectionFactory);
+	  return stringRedisTemplate;
+	}
 
-  /**
-   * @param imageHostAndPort the imageHostAndPort to set
-   */
-  public void setImageHostAndPort(String imageHostAndPort) {
-    this.imageHostAndPort = imageHostAndPort;
-  }
-
-/*  @Bean
-  public RedisCluster redisCluster() throws Exception {
-    RedisCluster cluster = new RedisCluster(imageHostAndPort);
-    return cluster;
-  }*/
 }
