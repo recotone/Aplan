@@ -15,7 +15,6 @@
 	    <thymeleaf.version>2.1.4.RELEASE</thymeleaf.version>
 	    <rocketmq.version>3.2.6</rocketmq.version>
 	    <zookeeper.version>3.4.6</zookeeper.version>
-	    <zkclient.version>0.1</zkclient.version>
 	    <druid.version>1.0.17</druid.version>
 	    <mysql.version>5.1.38</mysql.version>
 	    <mybatis.version>3.3.1</mybatis.version>
@@ -99,11 +98,6 @@
 			</exclusions>
 		</dependency>
 		<!-- zkclient -->
-		<dependency>
-			<groupId>com.github.sgroschupf</groupId>
-			<artifactId>zkclient</artifactId>
-			<version>${zkclient.version}</version>
-		</dependency>
 		<!-- thymeleaf -->
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
